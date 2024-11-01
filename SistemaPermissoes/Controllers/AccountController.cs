@@ -2,10 +2,9 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Org.BouncyCastle.Crypto.Generators;
 using Microsoft.AspNetCore.Authorization;
 
-namespace YourNamespace.Controllers
+namespace SistemaPermissoes.Controllers
 {
     public class AccountController : Controller
     {
@@ -24,13 +23,13 @@ namespace YourNamespace.Controllers
         }
 
         // Processa o login
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Login(string email, string senha)
         {
             var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
 
-            if (usuario != null && BCrypt.Net.BCrypt.Verify(senha, usuario.SenhaHash))
+            // Verifica se o usuário existe e se a senha é igual à armazenada
+            if (usuario != null && usuario.SenhaHash == senha) // Compare diretamente
             {
                 var claims = new List<Claim>
                 {
