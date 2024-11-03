@@ -8,7 +8,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 // Configuração do DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql("server=localhost;database=SistemaPermissoes;user=root;password=lojalolis",
+    options.UseMySql("server=localhost;database=SistemaPermissoes2;user=root;password=lojalolis",
     new MySqlServerVersion(new Version(9, 1, 0))));
 
 // Configuração de Autenticação usando Cookies

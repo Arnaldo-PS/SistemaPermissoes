@@ -3,6 +3,8 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace SistemaPermissoes.Controllers
 {
@@ -34,7 +36,7 @@ namespace SistemaPermissoes.Controllers
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, usuario.Email),
-                    new Claim("Handle", usuario.Handle.ToString()) // Adiciona o Handle como claim
+                    new Claim("Id", usuario.Id.ToString()) // Adiciona o Handle como claim
                 };
 
                 // Cria a identidade do usuário
@@ -43,11 +45,6 @@ namespace SistemaPermissoes.Controllers
                 // Realiza o login do usuário
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity));
-
-                // Armazena informações adicionais no ViewBag
-                ViewBag.UsuarioNome = usuario.Nome; // Passa o nome do usuário
-                ViewBag.Handle = usuario.Handle;
-                ViewBag.Papeis = usuario.Papeis;
 
                 return RedirectToAction("Index", "Home");
             }
