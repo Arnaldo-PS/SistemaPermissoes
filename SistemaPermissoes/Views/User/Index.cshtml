@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Usuários";
+
+    var tarefasDoUsuario = ViewBag.TarefasDoUsuario as List<Tarefa>;
 }
 
 <link rel="stylesheet" href="~/css/styles.css" />
@@ -40,7 +42,10 @@
                         }
                     </td>
                     <td>
-                        <a href="/User/Edit/@usuario.Id" class="btn-danger">Editar</a>
+                        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Editar Usuario"))
+                        {
+                            <a href="/User/Edit/@usuario.Id" class="btn-danger">Editar</a>
+                        }
                     </td>
                 </tr>
             }
@@ -49,9 +54,16 @@
     <p></p>
 
     <div class="mb-3">
-        <button class="btn btn-success" onclick="location.href='@Url.Action("Create", "User")'">Cadastrar Novo Usuário</button>
-        <button class="btn btn-primary" onclick="location.href='@Url.Action("Permissions", "User")'">Dar Permissões</button>
-        <a href="/User" class="btn-danger">Voltar</a>
+        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Cadastrar Usuario"))
+        {
+            <button class="btn btn-success" onclick="location.href='@Url.Action("Create", "User")'">Cadastrar Novo Usuário</button>
+        }
+        <a href="/Home" class="btn-danger">Voltar</a>
+        <p></p>
+        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Atribuir papel a usuario"))
+        {
+            <button class="btn btn-primary" onclick="location.href='@Url.Action("Permissions", "User")'">Dar Permissões</button>
+        }
     </div>
 
 </div>

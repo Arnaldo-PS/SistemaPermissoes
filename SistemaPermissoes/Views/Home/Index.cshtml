@@ -11,7 +11,7 @@
 <div class="home-container">
     <h2>Bem-vindo</h2>
     <div class="home-menu">
-            @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Cadastrar Usuário"))
+            @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Cadastrar Usuario"))
             {
                 <div class="menu-item">
                     <a href="/User">
@@ -20,23 +20,34 @@
                     </a>
                 </div>
             }
-        <div class="menu-item">
-            <a href="/Task">
-                <div class="icon clipboard-icon"></div>
-                <span>Gerenciar Tarefas</span>
-            </a>
-        </div>
-        <div class="menu-item">
-            <a href="/Role">
-                <div class="icon graph-icon"></div>
-                <span>Gerenciar Papéis</span>
-            </a>
-        </div>
-        <div class="menu-item">
-            <a href="/Dashboard">
-                <div class="icon tool-icon"></div>
-                <span>Ir para o Dashboard</span>
-            </a>
-        </div>
+            @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Criar Tarefa"))
+            {
+                <div class="menu-item">
+                    <a href="/Task">
+                        <div class="icon clipboard-icon"></div>
+                        <span>Gerenciar Tarefas</span>
+                    </a>
+                </div>
+            }
+        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Criar Papel"))
+
+        {
+            <div class="menu-item">
+                <a href="/Role">
+                    <div class="icon graph-icon"></div>
+                    <span>Gerenciar Papéis</span>
+                </a>
+            </div>
+            }
+        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Acessar Dashboard"))
+
+        {
+            <div class="menu-item">
+                <a href="/Dashboard">
+                    <div class="icon tool-icon"></div>
+                    <span>Ir para o Dashboard</span>
+                </a>
+            </div>
+        }
     </div>
 </div>

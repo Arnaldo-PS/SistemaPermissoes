@@ -1,7 +1,37 @@
-﻿@{
+﻿@model IEnumerable<Tarefa>
+
+@{
     ViewData["Title"] = "Tarefas";
 }
 
-<h2>Gerenciar Tarefas</h2>
+<link rel="stylesheet" href="~/css/styles.css" />
 
-<p>Aqui você pode gerenciar as tarefas que compõe os papeis.</p>
+
+
+<div class="user-management-wrapper">
+    <h1>Tarefas</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tarefa in Model)
+            {
+                <tr>
+                    <td>@tarefa.Id</td>
+                    <td>@tarefa.Nome</td>
+                    <td>
+                        <a href="/Task/Edit/@tarefa.Id" class="btn-danger">Editar</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p></p>
+    <button class="btn btn-success" onclick="location.href='@Url.Action("Create", "Task")'">Criar Nova Tarefa</button><a href="/Home" class="btn-danger">Voltar</a>
+</div>

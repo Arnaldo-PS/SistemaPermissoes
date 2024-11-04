@@ -1,7 +1,48 @@
-﻿@{
+﻿@model IEnumerable<RoleViewModel>
+
+@{
     ViewData["Title"] = "Papeis";
 }
 
-<h2>Gerenciar Papeis</h2>
+<link rel="stylesheet" href="~/css/styles.css" />
 
-<p>Aqui você pode gerenciar os papéis do sistema.</p>
+
+
+<div class="user-management-wrapper">
+    <h1>Papeis</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Tarefas Atribuidas</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var papel in Model)
+            {
+                <tr>
+                    <td>@papel.Id</td>
+                    <td>@papel.Nome</td>
+                    <td>
+                        @if (papel.Tarefas != null && papel.Tarefas.Any())
+                        {
+                            @string.Join(", ", papel.Tarefas)
+                        }
+                        else
+                        {
+                            <span>Nenhuma tarefa</span>
+                        }
+                    </td>
+                    <td>
+                        <a href="/Role/Edit/@papel.Id" class="btn-danger">Editar</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p></p>
+    <button class="btn btn-success" onclick="location.href='@Url.Action("Create", "Role")'">Criar Novo Papel</button><a href="/Home" class="btn-danger">Voltar</a>
+</div>

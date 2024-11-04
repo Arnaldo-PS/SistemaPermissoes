@@ -17,6 +17,26 @@ public class UserController : Controller
 
     public async Task<IActionResult> Index()
     {
+        // Obter o ID do usuário logado
+        var usuarioId = User.Claims.FirstOrDefault(c => c.Type == "Id")?.Value;
+
+        // Carregar os papéis e tarefas do usuário logado
+        var usuario = await _context.Usuarios
+            .Include(u => u.UsuarioPapel)
+                .ThenInclude(up => up.Papel)
+                .ThenInclude(p => p.PapelTarefa)
+                .ThenInclude(pt => pt.Tarefa)
+            .FirstOrDefaultAsync(u => u.Id.ToString() == usuarioId);
+
+        // Coletar as tarefas atribuídas ao usuário
+        var tarefasDoUsuario = usuario.UsuarioPapel
+            .SelectMany(up => up.Papel.PapelTarefa)
+            .Select(pt => pt.Tarefa)
+            .ToList();
+
+        // Passar as tarefas para a View
+        ViewBag.TarefasDoUsuario = tarefasDoUsuario;
+
         // Buscar todos os usuários do banco de dados e mapear para o UsuarioViewModel
         var usuarios = await _context.Usuarios
             .Include(u => u.UsuarioPapel) // Inclui os papéis associados ao usuário

@@ -1,0 +1,23 @@
+﻿@model TaskViewModel
+
+<link rel="stylesheet" href="~/css/styles.css" />
+
+<div class="form-container">
+    <h2>Editar tarefa</h2>
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" name="Id" value="@Model.Id" />
+
+        <div class="form-group">
+            <label asp-for="Nome">Nome</label>
+            <input type="text" name="Nome" value="@Model.Nome" required />
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn-submit">Salvar Alterações</button>
+        <a href="/Task" class="btn-back">Voltar</a>
+    </form>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+</div>
