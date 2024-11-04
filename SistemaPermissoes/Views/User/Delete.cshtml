@@ -1,0 +1,14 @@
+﻿@model UserDeleteViewModel
+
+<link rel="stylesheet" href="~/css/styles.css" />
+
+<div class="form-container">
+    <h2>Confirmar Exclusão</h2>
+    <p>Tem certeza de que deseja excluir o usuário "@Model.Nome"?</p>
+
+    <form action="/User/DeleteConfirmed" method="post">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a href="/User" class="btn-success">Cancelar</a>
+    </form>
+</div>

@@ -210,7 +210,7 @@ public class UserController : Controller
         var papeis = await _context.Papeis.ToListAsync();
 
         // Criar um ViewModel para passar os dados para a view
-        var viewModel = new AssignPermissionsViewModel
+        var viewModel = new UserRoleViewModel
         {
             UsuarioId = usuario.Id,
             NomeUsuario = usuario.Nome,
@@ -254,4 +254,60 @@ public class UserController : Controller
         await _context.SaveChangesAsync();
         return RedirectToAction("Permissions"); // Redireciona de volta à lista de usuários
     }
+
+    // Ação para exibir a confirmação de exclusão
+    [HttpGet]
+    public async Task<IActionResult> Delete(int id)
+    {
+        // Busca o usuário pelo ID
+        var usuario = await _context.Usuarios
+            .Include(u => u.UsuarioPapel) // Incluir os papéis associados para remoção em cascata
+            .FirstOrDefaultAsync(u => u.Id == id);
+
+        if (usuario == null)
+        {
+            return NotFound(); // Retornar 404 se o usuário não for encontrado
+        }
+
+        // Criar um ViewModel para exibir a confirmação de exclusão
+        var viewModel = new UserDeleteViewModel
+        {
+            Id = usuario.Id,
+            Nome = usuario.Nome,
+            Email = usuario.Email
+        };
+
+        return View(viewModel); // Retorna a view de confirmação
+    }
+
+    // Ação para processar a exclusão
+    [HttpPost]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        try
+        {
+            // Busca o usuário pelo ID
+            var usuario = await _context.Usuarios
+                .Include(u => u.UsuarioPapel) // Incluir os papéis associados para remoção em cascata
+                .FirstOrDefaultAsync(u => u.Id == id);
+
+            if (usuario == null)
+            {
+                return NotFound(); // Retornar 404 se o usuário não for encontrado
+            }
+
+            // Remover o usuário e seus papéis associados
+            _context.Usuarios.Remove(usuario);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index"); // Redireciona de volta à lista de usuários
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError(string.Empty, ex.Message);
+            return View("Delete", new UserDeleteViewModel { Id = id });
+        }
+    }
+
+
 }

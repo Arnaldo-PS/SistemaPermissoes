@@ -47,7 +47,8 @@
                         @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Editar Usuario"))
                         {
                         <td>
-                                <a href="/User/Edit/@usuario.Id" class="btn-danger">Editar</a>
+                            <a href="/User/Edit/@usuario.Id" class="btn-danger">Editar</a>
+                            <a href="/User/Delete/@usuario.Id" class="btn-danger">Excluir</a>
                         </td>
                         }
                 </tr>

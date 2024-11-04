@@ -1,4 +1,4 @@
-﻿public class AssignPermissionsViewModel
+﻿public class UserRoleViewModel
 {
     public int UsuarioId { get; set; }
     public string NomeUsuario { get; set; }
