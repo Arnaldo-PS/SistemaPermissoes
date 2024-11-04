@@ -2,9 +2,9 @@
 
 <link rel="stylesheet" href="~/css/style.css" />
 
-<div class="form-container">
+<div class="user-management-wrapper">
     <h2>Criar papel</h2>
-
+    <br />
     <form asp-action="Create" method="post">
         <div class="form-group">
             <label asp-for="Nome">Nome</label>
@@ -13,13 +13,15 @@
         </div>
         <div>
             <h4>Tarefas disponíveis:</h4>
-            @foreach (var tarefa in Model.Tarefas)
-            {
-                <div>
-                    <input type="checkbox" name="tarefas" value="@tarefa.TarefaId" @(tarefa.IsAssigned ? "checked" : "") />
-                    <label>@tarefa.TarefaNome</label>
-                </div>
-            }
+            <div class="checkbox-list">
+                @foreach (var tarefa in Model.Tarefas)
+                {
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="tarefas" value="@tarefa.TarefaId" @(tarefa.IsAssigned ? "checked" : "") />
+                        <label>@tarefa.TarefaNome</label>
+                    </div>
+                }
+            </div>
         </div>
 
         <button type="submit" class="btn-submit">Criar</button>

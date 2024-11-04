@@ -5,9 +5,9 @@
 }
 
 <link rel="stylesheet" href="~/css/style.css" />
-<div class="form-container">
+<div class="user-management-wrapper">
     <h2>Atribuir papeis para @Model.NomeUsuario</h2>
-
+    <br />
     <form action="/User/SavePermissions" method="post">
         <input type="hidden" name="UsuarioId" value="@Model.UsuarioId" />
 

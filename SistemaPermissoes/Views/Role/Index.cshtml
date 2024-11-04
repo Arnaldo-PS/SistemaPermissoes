@@ -9,7 +9,8 @@
 
 
 <div class="user-management-wrapper">
-    <h1>Papeis</h1>
+    <h2>Papeis</h2>
+    <br />
     <table class="table">
         <thead>
             <tr>
@@ -44,5 +45,10 @@
         </tbody>
     </table>
     <p></p>
-    <button class="btn btn-success" onclick="location.href='@Url.Action("Create", "Role")'">Criar Novo Papel</button><a href="/Home" class="btn-danger">Voltar</a>
+    
+    
+    <div class="button-row">
+        <button class="btn btn-success" onclick="location.href='@Url.Action("Create", "Role")'">Criar Novo Papel</button>
+        <a href="/Home" class="btn btn-secondary">Voltar</a>
+    </div>
 </div>
