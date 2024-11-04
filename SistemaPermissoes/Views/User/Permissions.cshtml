@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<UserViewModel>
 
 @{
-    ViewData["Title"] = "Dar Permissões";
+    ViewData["Title"] = "Conceder Permissões";
 }
 
-<link rel="stylesheet" href="~/css/styles.css" />
+<link rel="stylesheet" href="~/css/style.css" />
 
 <div class="permissions-wrapper">
-    <h2>Dar Permissões</h2>
+    <h2>Conceder Permissões</h2>
 
     <table class="table table-striped">
         <thead>
@@ -35,12 +35,14 @@
                         }
                     </td>
                     <td>
-                        <a href="/User/AddPermissions/@usuario.Id" class="btn-danger">Adicionar Permissões</a>
+                        <a href="/User/AddPermissions/@usuario.Id" class="btn-permission">Adicionar Permissões</a>
                     </td>
                 </tr>
             }
-            <a href="/User" class="btn-danger">Voltar</a>
-
         </tbody>
     </table>
+
+    <div class="button-group">
+        <a href="/User" class="btn-back">Voltar</a>
+    </div>
 </div>

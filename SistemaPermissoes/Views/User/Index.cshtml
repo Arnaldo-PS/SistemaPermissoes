@@ -6,10 +6,12 @@
     var tarefasDoUsuario = ViewBag.TarefasDoUsuario as List<Tarefa>;
 }
 
-<link rel="stylesheet" href="~/css/styles.css" />
+<link rel="stylesheet" href="~/css/style.css" />
 
 <div class="user-management-wrapper">
     <h2>Gerenciar Usuários</h2>
+
+<br />
 
     <table class="table table-striped">
         <thead>
@@ -18,9 +20,10 @@
                 <th>Email</th>
                 <th>Papéis</th>
                 @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Editar Usuario"))
-                        {
-                            <th>Ações</th>
-                        }
+
+                {
+                    <th>Ações</th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -34,40 +37,34 @@
 
                         {
                             @string.Join(", ", usuario.Papeis)
-                            // Mostra os papéis separados por vírgula
-
                         }
 
                         else
 
                         {
-                            <span>Nenhum papel</span> <!-- Mensagem caso o usuário não tenha papéis -->
+                            <span>Nenhum papel</span>
                         }
                     </td>
-                        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Editar Usuario"))
-                        {
+                    @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Editar Usuario"))
+                    {
                         <td>
-                            <a href="/User/Edit/@usuario.Id" class="btn-danger">Editar</a>
-                            <a href="/User/Delete/@usuario.Id" class="btn-danger">Excluir</a>
+                            <a href="/User/Edit/@usuario.Id" class="btn btn-danger">Editar</a>
+                            <a href="/User/Delete/@usuario.Id" class="btn btn-danger">Excluir</a>
                         </td>
-                        }
+                    }
                 </tr>
             }
         </tbody>
     </table>
-    <p></p>
 
-    <div class="mb-3">
-        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Cadastrar Usuario"))
-        {
-            <button class="btn btn-success" onclick="location.href='@Url.Action("Create", "User")'">Cadastrar Novo Usuário</button>
-        }
-        <a href="/Home" class="btn-danger">Voltar</a>
-        <p></p>
+    <div class="button-row">
+        <button class="btn btn-success" onclick="location.href='@Url.Action("Create", "User")'">Cadastrar Novo Usuário</button>
+        <a href="/Home" class="btn btn-secondary">Voltar</a>
         @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Atribuir papel a usuario"))
+
         {
             <button class="btn btn-primary" onclick="location.href='@Url.Action("Permissions", "User")'">Dar Permissões</button>
         }
     </div>
-
 </div>
+

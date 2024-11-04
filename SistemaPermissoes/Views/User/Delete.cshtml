@@ -1,6 +1,6 @@
 ﻿@model UserDeleteViewModel
 
-<link rel="stylesheet" href="~/css/styles.css" />
+<link rel="stylesheet" href="~/css/style.css" />
 
 <div class="form-container">
     <h2>Confirmar Exclusão</h2>
@@ -8,7 +8,10 @@
 
     <form action="/User/DeleteConfirmed" method="post">
         <input type="hidden" name="id" value="@Model.Id" />
-        <button type="submit" class="btn btn-danger">Excluir</button>
-        <a href="/User" class="btn-success">Cancelar</a>
+
+        <div class="button-group">
+            <button type="submit" class="btn btn-danger">Excluir</button>
+            <a href="/User" class="btn btn-success">Cancelar</a>
+        </div>
     </form>
 </div>

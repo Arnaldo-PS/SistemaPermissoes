@@ -4,25 +4,29 @@
     ViewData["Title"] = "Atribuir Permissões - " + Model.NomeUsuario;
 }
 
-<link rel="stylesheet" href="~/css/styles.css" />
+<link rel="stylesheet" href="~/css/style.css" />
 <div class="form-container">
-    <h2>Atribuir Permissões para @Model.NomeUsuario</h2>
+    <h2>Atribuir papeis para @Model.NomeUsuario</h2>
 
     <form action="/User/SavePermissions" method="post">
         <input type="hidden" name="UsuarioId" value="@Model.UsuarioId" />
 
-        <div>
-            <h4>Papéis disponíveis:</h4>
-            @foreach (var papel in Model.Papeis)
-            {
-                <div>
-                    <input type="checkbox" name="papeis" value="@papel.Id" @(papel.IsAssigned ? "checked" : "") />
-                    <label>@papel.Nome</label>
-                </div>
-            }
+        <div class="permissions-group">
+            <h4>Papéis Disponíveis</h4>
+            <div class="checkbox-list">
+                @foreach (var papel in Model.Papeis)
+                {
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="papel_@papel.Id" name="papeis" value="@papel.Id" @(papel.IsAssigned ? "checked" : "") />
+                        <label for="papel_@papel.Id">@papel.Nome</label>
+                    </div>
+                }
+            </div>
         </div>
-        <p></p>
-        <button type="submit" class="btn-submit">Salvar Permissões</button>
-        <a href="/User/Permissions" class="btn-danger">Cancelar</a>
+
+        <div class="button-group">
+            <button type="submit" class="btn-submit">Salvar Permissões</button>
+            <a href="/User/Permissions" class="btn-back">Cancelar</a>
+        </div>
     </form>
 </div>

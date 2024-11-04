@@ -49,12 +49,19 @@
                 </a>
             </div>
         }
+        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Acessar Orçamentos"))
+
+        {
             <div class="menu-item">
                 <a href="/Budget">
                     <div class="icon budget-icon"></div>
                     <span>Gerenciar Orçamentos</span>
                 </a>
             </div>
+        }
+        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Acessar Projetos"))
+
+        {
 
             <div class="menu-item">
                 <a href="/Project">
@@ -62,6 +69,7 @@
                     <span>Gerenciar Projetos</span>
                 </a>
             </div>
+        }
         
     </div>
     <br />

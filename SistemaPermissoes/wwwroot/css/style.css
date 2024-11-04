@@ -195,3 +195,533 @@ body {
     .btn-danger:hover {
         background-color: #d32f2f;
     }
+
+/* Estilo para a página de Gerenciamento de Usuários */
+
+/* Estilos Gerais para a Tela de Gerenciamento de Usuários */
+.user-management-wrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+    .user-management-wrapper h2 {
+        font-size: 26px;
+        color: #6a1b9a;
+        margin-bottom: 20px;
+    }
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Espaçamento entre linhas */
+    margin-bottom: 20px;
+}
+
+    .table th,
+    .table td {
+        padding: 12px;
+        text-align: left;
+        background-color: #f8f9fa; /* Fundo claro para o conteúdo da tabela */
+        border: none; /* Remove bordas internas */
+    }
+
+    .table th {
+        background-color: #6a1b9a;
+        color: #ffffff;
+        font-weight: bold;
+    }
+
+    .table td {
+        background-color: #ffffff; /* Fundo branco para as células */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombras para destaque */
+    }
+
+    .table .btn {
+        padding: 8px 15px;
+        border-radius: 4px;
+        font-size: 0.9em;
+        color: #ffffff;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        margin-right: 5px;
+    }
+
+    .table .btn-danger {
+        background-color: #e53935;
+    }
+
+        .table .btn-danger:hover {
+            background-color: #d32f2f;
+        }
+
+    .table .btn-primary {
+        background-color: #1e88e5;
+    }
+
+        .table .btn-primary:hover {
+            background-color: #1976d2;
+        }
+
+    .table .btn-success {
+        background-color: #43a047;
+    }
+
+        .table .btn-success:hover {
+            background-color: #388e3c;
+        }
+
+/* Estilo para botões fora da tabela */
+.mb-3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+    .mb-3 button,
+    .mb-3 a {
+        padding: 12px 20px;
+        font-size: 1em;
+        border: none;
+        border-radius: 5px;
+        color: #ffffff;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+.btn-success {
+    background-color: #43a047;
+}
+
+    .btn-success:hover {
+        background-color: #388e3c;
+    }
+
+.btn-danger {
+    background-color: #e53935;
+}
+
+    .btn-danger:hover {
+        background-color: #d32f2f;
+    }
+
+/* Estilos para o grupo de botões */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os botões */
+    margin-bottom: 20px; /* Espaço abaixo dos botões */
+}
+
+    .button-group .btn {
+        width: 100%; /* Mesma largura para todos os botões */
+        padding: 12px;
+        font-size: 1em;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+.btn-success {
+    background-color: #43a047;
+    color: #ffffff;
+}
+
+    .btn-success:hover {
+        background-color: #388e3c;
+    }
+
+.btn-secondary {
+    background-color: #757575;
+    color: #ffffff;
+}
+
+    .btn-secondary:hover {
+        background-color: #616161;
+    }
+
+.btn-primary {
+    background-color: #1e88e5;
+    color: #ffffff;
+}
+
+    .btn-primary:hover {
+        background-color: #1976d2;
+    }
+.button-row {
+    display: flex;
+    gap: 10px; /* Espaçamento entre os botões */
+    margin-bottom: 20px;
+}
+
+    .button-row .btn {
+        flex: 1; /* Dividir igualmente entre os botões */
+        padding: 12px;
+        font-size: 1em;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+.btn-success {
+    background-color: #43a047;
+    color: #ffffff;
+}
+
+    .btn-success:hover {
+        background-color: #388e3c;
+    }
+
+.btn-secondary {
+    background-color: #757575;
+    color: #ffffff;
+}
+
+    .btn-secondary:hover {
+        background-color: #616161;
+    }
+
+.btn-primary {
+    background-color: #1e88e5;
+    color: #ffffff;
+}
+
+    .btn-primary:hover {
+        background-color: #1976d2;
+    }
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+    .form-group label {
+        font-weight: bold;
+        color: #555;
+    }
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+    .form-control:focus {
+        border-color: #43a047;
+        outline: none;
+        box-shadow: 0 0 5px rgba(67, 160, 71, 0.2);
+    }
+
+.text-danger {
+    font-size: 0.85em;
+    color: #d9534f;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-success {
+    background-color: #43a047;
+}
+
+    .btn-success:hover {
+        background-color: #388e3c;
+    }
+
+.btn-secondary {
+    background-color: #757575;
+}
+
+    .btn-secondary:hover {
+        background-color: #616161;
+    }
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+    .form-group label {
+        font-weight: bold;
+        color: #555;
+    }
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+    .form-control:focus {
+        border-color: #43a047;
+        outline: none;
+        box-shadow: 0 0 5px rgba(67, 160, 71, 0.2);
+    }
+
+.text-danger {
+    font-size: 0.85em;
+    color: #d9534f;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-success {
+    background-color: #43a047;
+}
+
+    .btn-success:hover {
+        background-color: #388e3c;
+    }
+
+.btn-secondary {
+    background-color: #757575;
+}
+
+    .btn-secondary:hover {
+        background-color: #616161;
+    }
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.permissions-group {
+    margin-bottom: 20px;
+}
+
+    .permissions-group h4 {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+.checkbox-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+}
+
+    .checkbox-item input[type="checkbox"] {
+        margin-right: 8px;
+    }
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-submit, .btn-back {
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit {
+    background-color: #28a745;
+}
+
+.btn-back {
+    background-color: #dc3545;
+}
+
+.btn-submit:hover {
+    background-color: #218838;
+}
+
+.btn-back:hover {
+    background-color: #c82333;
+}
+
+.permissions-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+    .permissions-wrapper h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+    .table th, .table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+
+    .table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+.btn-permission {
+    padding: 6px 12px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-permission:hover {
+        background-color: #0056b3;
+    }
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-back {
+    padding: 8px 16px;
+    border-radius: 5px;
+    background-color: #dc3545;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-back:hover {
+        background-color: #c82333;
+    }
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+    .form-container h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .form-container p {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Adiciona espaço entre os botões */
+}
+
+.btn-danger, .btn-success {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+.btn-success {
+    background-color: #28a745;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
