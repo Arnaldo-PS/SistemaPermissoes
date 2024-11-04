@@ -67,12 +67,5 @@ namespace SistemaPermissoes.Controllers
             return View();
         }
 
-        // Realiza o logout
-        [HttpPost]
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login", "Account");
-        }
     }
 }
