@@ -1,0 +1,404 @@
+﻿/* styles.css */
+
+body {
+    background-color: #f0f4f8; /* Fundo claro para destacar o formulário */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Preenche toda a altura da tela */
+}
+
+.login-wrapper {
+    width: 100%;
+    max-width: 400px; /* Largura máxima do formulário */
+    padding: 20px; /* Espaçamento interno */
+}
+
+.login-container {
+    background-color: #ffffff; /* Fundo branco do formulário */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 30px; /* Mais espaçamento interno */
+}
+
+/* Estilização do wrapper para a gestão de usuários */
+.user-management-wrapper {
+    width: 90%;
+    max-width: 800px; /* Largura máxima do contêiner */
+    margin: 50px auto; /* Centraliza verticalmente e horizontalmente */
+    padding: 20px;
+    background-color: #ffffff; /* Fundo branco */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.table {
+    width: 100%; /* Largura total da tabela */
+    margin-top: 20px; /* Espaçamento superior */
+    border-collapse: collapse; /* Remove espaçamento entre células */
+}
+
+.table th, .table td {
+        padding: 12px; /* Espaçamento interno nas células */
+        text-align: left; /* Alinhamento do texto à esquerda */
+        border-bottom: 1px solid #ddd; /* Linha abaixo das células */
+}
+
+.table th {
+        background-color: #4b0082; /* Cor do cabeçalho */
+        color: white; /* Cor do texto do cabeçalho */
+    }
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9; /* Cor de fundo das linhas ímpares */
+}
+
+.table-striped tbody tr:hover {
+    background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+}
+
+.btn-success {
+    background-color: #28a745; /* Cor verde do botão */
+    color: white; /* Cor do texto do botão */
+    border: none; /* Remove bordas padrão */
+    border-radius: 4px; /* Bordas arredondadas no botão */
+    padding: 10px 15px; /* Espaçamento interno do botão */
+    cursor: pointer; /* Cursor em forma de mão */
+    transition: background-color 0.3s; /* Transição suave na cor de fundo */
+}
+
+.btn-success:hover {
+        background-color: #218838; /* Cor do botão quando o mouse passa */
+    }
+
+/* Estilização do wrapper para a criação de usuários */
+.user-create-wrapper {
+    width: 90%;
+    max-width: 500px; /* Largura máxima do contêiner */
+    margin: 50px auto; /* Centraliza verticalmente e horizontalmente */
+    padding: 20px;
+    background-color: #ffffff; /* Fundo branco */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+h2 {
+    text-align: center; /* Centraliza o título */
+    color: #4b0082; /* Cor roxa do título */
+    margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+label {
+    font-weight: bold; /* Títulos mais destacados */
+    color: #333; /* Cor do texto */
+}
+
+.form-control {
+    width: 100%; /* Largura total dos campos */
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ddd; /* Bordas do campo */
+    border-radius: 4px; /* Bordas arredondadas */
+    transition: border-color 0.3s; /* Transição suave na borda */
+}
+
+.form-control:focus {
+        border-color: #4b0082; /* Cor da borda quando em foco */
+        outline: none; /* Remove o contorno padrão */
+    }
+
+.btn-primary {
+    background-color: #4b0082; /* Cor de fundo do botão roxo */
+    color: white; /* Cor do texto do botão */
+    border: none; /* Remove bordas padrão */
+    padding: 10px; /* Espaçamento interno do botão */
+    border-radius: 4px; /* Bordas arredondadas no botão */
+    cursor: pointer; /* Cursor em forma de mão */
+    transition: background-color 0.3s; /* Transição suave na cor de fundo */
+}
+
+.btn-primary:hover {
+        background-color: #6a0dad; /* Cor do botão quando o mouse passa */
+    }
+
+/* Centraliza o contêiner e estiliza o formulário */
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-container h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+    }
+
+/* Estiliza cada grupo de campo do formulário */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+        display: block;
+        font-weight: bold;
+        color: #555;
+    }
+
+.form-group input.form-control {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+/* Estilo para mensagens de erro */
+.text-danger {
+    font-size: 12px;
+    color: #d9534f;
+}
+
+/* Estilo para o botão de submissão */
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+/* Centralizar o contêiner e adicionar sombra */
+.home-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+    .home-container h2 {
+        font-size: 26px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .home-container p {
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+/* Estilizar o menu de links */
+.home-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.home-menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 quadrados por linha */
+    gap: 20px; /* Espaçamento entre os quadrados */
+    max-width: 800px; /* Largura máxima do container */
+    margin: 0 auto; /* Centraliza o container */
+}
+
+.menu-item {
+    background-color: #4CAF50; /* Cor de fundo do quadrado */
+    color: white; /* Cor do texto */
+    border: 2px solid #388E3C; /* Borda do quadrado */
+    border-radius: 15px; /* Bordas mais arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    text-decoration: none;
+    text-align: center; /* Centraliza o texto */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.menu-item:hover {
+    background-color: #388E3C; /* Cor ao passar o mouse */
+    transform: scale(1.05); /* Aumenta ligeiramente o quadrado ao passar o mouse */
+}
+
+.icon {
+    width: 60px; /* Aumenta um pouco o tamanho dos ícones */
+    height: 60px; /* Aumenta um pouco o tamanho dos ícones */
+    margin: 0 auto 10px; /* Espaçamento abaixo do ícone */
+}
+
+/* Estilo do ícone de Usuários */
+.user-icon {
+    background-color: white; /* Cor de fundo do ícone */
+    border-radius: 50%; /* Círculo */
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+.user-icon::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: #4CAF50; /* Cor do "cabelo" */
+}
+.user-icon::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 30%;
+    border-radius: 10px; /* Estilo do corpo */
+    background-color: #4CAF50;
+}
+
+/* Estilo do ícone de Prancheta */
+.clipboard-icon {
+    background-color: white; /* Cor de fundo do ícone */
+    border-radius: 5px; /* Cantos arredondados */
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+.clipboard-icon::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: 30%;
+    width: 40%;
+    height: 10%;
+    background-color: #4CAF50; /* Cor do clip */
+    border-radius: 2px; /* Bordas do clip */
+}
+.clipboard-icon::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 90%;
+    background-color: #4CAF50; /* Cor do corpo da prancheta */
+    border-radius: 5px; /* Cantos arredondados */
+}
+
+/* Estilo do ícone de Gráfico */
+.graph-icon {
+    background-color: white; /* Cor de fundo do ícone */
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+.graph-icon::before {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    width: 15%;
+    height: 50%;
+    background-color: #4CAF50; /* Barra do gráfico */
+}
+.graph-icon::after {
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    left: 40%;
+    width: 15%;
+    height: 30%;
+    background-color: #4CAF50; /* Barra do gráfico */
+}
+.graph-icon::after {
+    content: '';
+    position: absolute;
+    bottom: 30%;
+    left: 70%;
+    width: 15%;
+    height: 70%;
+    background-color: #4CAF50; /* Barra do gráfico */
+}
+
+/* Estilo do ícone de Ferramenta */
+.tool-icon {
+    background-color: white; /* Cor de fundo do ícone */
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+.tool-icon::before {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    width: 10%;
+    height: 40%;
+    background-color: #4CAF50; /* Cabo da ferramenta */
+}
+    .tool-icon::after {
+        content: '';
+        position: absolute;
+        top: 30%;
+        left: 20%;
+        width: 20%;
+        height: 10%;
+        background-color: #4CAF50; /* Ponta da ferramenta */
+        transfor
+    }
+    .btn-danger {
+    background-color: #dc3545; /* Cor de fundo vermelha */
+    color: white; /* Cor do texto branca */
+    border: 1px solid #dc3545; /* Borda na mesma cor do fundo */
+    padding: 0.375rem 0.75rem; /* Preenchimento para o botão */
+    font-size: 1rem; /* Tamanho da fonte */
+    font-weight: 400; /* Peso da fonte */
+    line-height: 1.5; /* Altura da linha */
+    text-align: center; /* Centraliza o texto */
+    text-decoration: none; /* Remove o sublinhado */
+    display: inline-block; /* Para que o botão se comporte como um bloco em linha */
+    margin: 0; /* Margens */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out; /* Efeito de transição */
+    border-radius: 0.25rem; /* Cantos arredondados */
+}
+
+.btn-back {
+    padding: 10px 15px;
+    background-color: #dc3545; /* Cor de fundo vermelha */
+    color: white; /* Cor do texto branca */
+    border: 1px solid #dc3545; /* Borda na mesma cor do fundo */
+    padding: 0.375rem 0.75rem; /* Preenchimento para o botão */
+    font-size: 1rem; /* Tamanho da fonte */
+    font-weight: 400; /* Peso da fonte */
+    line-height: 1.5; /* Altura da linha */
+    text-align: center; /* Centraliza o texto */
+    text-decoration: none; /* Remove o sublinhado */
+    display: inline-block; /* Para que o botão se comporte como um bloco em linha */
+    margin: 0; /* Margens */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out; /* Efeito de transição */
+    border-radius: 0.25rem; /* Cantos arredondados */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Cor de fundo mais escura ao passar o mouse */
+    border-color: #bd2130; /* Borda mais escura ao passar o mouse */
+}
+
+.btn-danger:focus {
+    outline: none; /* Remove a borda de foco padrão */
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5); /* Sombra para indicar foco */
+}
+

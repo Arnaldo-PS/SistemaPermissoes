@@ -1,9 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SistemaPermissoes.Models;
+using System.ComponentModel.DataAnnotations;
 
 public class Papel
 {
     [Key]
-    public int Handle { get; set; }
+    public int Id { get; set; }
+
+    [Required]
+    [StringLength(100)]
     public string Nome { get; set; }
-    public List<Tarefa> Tarefas { get; set; } = new List<Tarefa>();
+
+    public virtual ICollection<UsuarioPapel> UsuarioPapel { get; set; }
+    public virtual ICollection<PapelTarefa> PapelTarefa { get; set; }
 }

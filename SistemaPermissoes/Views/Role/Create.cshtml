@@ -1,0 +1,28 @@
+﻿@model RoleCreateViewModel
+
+<link rel="stylesheet" href="~/css/styles.css" />
+
+<div class="form-container">
+    <h2>Criar papel</h2>
+
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="Nome">Nome</label>
+            <input type="text" name="Nome" required />
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+        <div>
+            <h4>Tarefas disponíveis:</h4>
+            @foreach (var tarefa in Model.Tarefas)
+            {
+                <div>
+                    <input type="checkbox" name="tarefas" value="@tarefa.TarefaId" @(tarefa.IsAssigned ? "checked" : "") />
+                    <label>@tarefa.TarefaNome</label>
+                </div>
+            }
+        </div>
+
+        <button type="submit" class="btn-submit">Criar</button>
+        <a href="/Role" class="btn-danger">Cancelar</a>
+    </form>
+</div>

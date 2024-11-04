@@ -1,0 +1,46 @@
+﻿@model IEnumerable<UserViewModel>
+
+@{
+    ViewData["Title"] = "Dar Permissões";
+}
+
+<link rel="stylesheet" href="~/css/styles.css" />
+
+<div class="permissions-wrapper">
+    <h2>Dar Permissões</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Papéis</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model)
+            {
+                <tr>
+                    <td>@usuario.Nome</td>
+                    <td>@usuario.Email</td>
+                    <td>
+                        @if (usuario.Papeis != null && usuario.Papeis.Any())
+                        {
+                            @string.Join(", ", usuario.Papeis)
+                        }
+                        else
+                        {
+                            <span>Nenhum papel</span>
+                        }
+                    </td>
+                    <td>
+                        <a href="/User/AddPermissions/@usuario.Id" class="btn-danger">Adicionar Permissões</a>
+                    </td>
+                </tr>
+            }
+            <a href="/User" class="btn-danger">Voltar</a>
+
+        </tbody>
+    </table>
+</div>

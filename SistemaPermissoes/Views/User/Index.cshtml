@@ -1,7 +1,72 @@
-﻿@{
-    ViewData["Title"] = "Usuarios";
+﻿@model IEnumerable<UserViewModel>
+
+@{
+    ViewData["Title"] = "Usuários";
+
+    var tarefasDoUsuario = ViewBag.TarefasDoUsuario as List<Tarefa>;
 }
 
-<h2>Gerenciar Usuarios</h2>
+<link rel="stylesheet" href="~/css/styles.css" />
 
-<p>Aqui você pode gerenciar usuários e seus papéis.</p>
+<div class="user-management-wrapper">
+    <h2>Gerenciar Usuários</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Papéis</th>
+                @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Editar Usuario"))
+                        {
+                            <th>Ações</th>
+                        }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model)
+            {
+                <tr>
+                    <td>@usuario.Nome</td>
+                    <td>@usuario.Email</td>
+                    <td>
+                        @if (usuario.Papeis != null && usuario.Papeis.Any())
+
+                        {
+                            @string.Join(", ", usuario.Papeis)
+                            // Mostra os papéis separados por vírgula
+
+                        }
+
+                        else
+
+                        {
+                            <span>Nenhum papel</span> <!-- Mensagem caso o usuário não tenha papéis -->
+                        }
+                    </td>
+                        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Editar Usuario"))
+                        {
+                        <td>
+                                <a href="/User/Edit/@usuario.Id" class="btn-danger">Editar</a>
+                        </td>
+                        }
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p></p>
+
+    <div class="mb-3">
+        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Cadastrar Usuario"))
+        {
+            <button class="btn btn-success" onclick="location.href='@Url.Action("Create", "User")'">Cadastrar Novo Usuário</button>
+        }
+        <a href="/Home" class="btn-danger">Voltar</a>
+        <p></p>
+        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Atribuir papel a usuario"))
+        {
+            <button class="btn btn-primary" onclick="location.href='@Url.Action("Permissions", "User")'">Dar Permissões</button>
+        }
+    </div>
+
+</div>

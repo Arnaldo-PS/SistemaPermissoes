@@ -1,0 +1,28 @@
+﻿@model AssignPermissionsViewModel
+
+@{
+    ViewData["Title"] = "Atribuir Permissões - " + Model.NomeUsuario;
+}
+
+<link rel="stylesheet" href="~/css/styles.css" />
+<div class="form-container">
+    <h2>Atribuir Permissões para @Model.NomeUsuario</h2>
+
+    <form action="/User/SavePermissions" method="post">
+        <input type="hidden" name="UsuarioId" value="@Model.UsuarioId" />
+
+        <div>
+            <h4>Papéis disponíveis:</h4>
+            @foreach (var papel in Model.Papeis)
+            {
+                <div>
+                    <input type="checkbox" name="papeis" value="@papel.Id" @(papel.IsAssigned ? "checked" : "") />
+                    <label>@papel.Nome</label>
+                </div>
+            }
+        </div>
+        <p></p>
+        <button type="submit" class="btn-submit">Salvar Permissões</button>
+        <a href="/User/Permissions" class="btn-danger">Cancelar</a>
+    </form>
+</div>

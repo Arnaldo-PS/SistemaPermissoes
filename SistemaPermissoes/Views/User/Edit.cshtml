@@ -1,0 +1,41 @@
+﻿@model UserEditViewModel
+
+<link rel="stylesheet" href="~/css/styles.css" />
+
+<div class="form-container">
+    <h2>Editar Usuário</h2>
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" name="Id" value="@Model.Id" />
+
+        <div class="form-group">
+            <label asp-for="Nome">Nome</label>
+            <input type="text" name="Nome" value="@Model.Nome" required  />
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input type="email" name="Email" value="@Model.Email" required  />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Senha">Senha</label>
+            <input type="text" name="Senha" value="@Model.Senha" required  />
+            <span asp-validation-for="Senha" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ConfirmarSenha">Confirmar Senha</label>
+            <input type="text" name="ConfirmarSenha" value="@Model.Senha" required  />
+            <span asp-validation-for="ConfirmarSenha" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn-submit">Salvar Alterações</button>
+        <a href="/User" class="btn-back">Voltar</a>
+    </form>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+</div>
