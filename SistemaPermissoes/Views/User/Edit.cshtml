@@ -4,7 +4,14 @@
 
 <div class="form-container">
     <h2>Editar Usuário</h2>
+    @if (!ViewData.ModelState.IsValid)
 
+    {
+        <div class="alert alert-danger" role="alert">
+            <strong>Ops!</strong> Algo deu errado:
+            @Html.ValidationSummary(false)
+        </div>
+    }
     <form asp-action="Edit" method="post">
         <input type="hidden" name="Id" value="@Model.Id" />
 

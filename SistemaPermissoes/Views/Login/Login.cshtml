@@ -7,6 +7,14 @@
 <div class="login-wrapper">
     <div class="login-container">
         <h2>Login</h2>
+        @if (!ViewData.ModelState.IsValid)
+
+        {
+            <div class="alert alert-danger" role="alert">
+                <strong>Ops!</strong> Algo deu errado:
+                @Html.ValidationSummary(false)
+            </div>
+        }
         <form method="post" asp-action="Login">
             <div class="form-group">
                 <label for="email">Email</label>
@@ -19,11 +27,6 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Entrar</button>
-
-            @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
-            {
-                <p class="text-danger">@ViewData["ErrorMessage"]</p>
-            }
         </form>
     </div>
 </div>

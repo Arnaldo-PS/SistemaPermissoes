@@ -4,7 +4,14 @@
 
 <div class="form-container">
     <h2>Cadastrar Novo Usuário</h2>
+    @if (!ViewData.ModelState.IsValid)
 
+    {
+        <div class="alert alert-danger" role="alert">
+            <strong>Ops!</strong> Algo deu errado:
+            @Html.ValidationSummary(false)
+        </div>
+    }
     <form asp-action="Create" method="post">
         <div class="form-group">
             <label asp-for="Nome">Nome</label>

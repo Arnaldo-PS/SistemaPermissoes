@@ -64,24 +64,45 @@ public class UserController : Controller
     [HttpPost]
     public async Task<IActionResult> Create(UserCreateViewModel model)
     {
-        if (ModelState.IsValid)
-        {
-            var usuario = new Usuario
+        try { 
+            if (ModelState.IsValid)
             {
-                Nome = model.Nome,
-                Email = model.Email,
-                Senha = model.Senha,
-            };
+                // Verifica se o e-mail já está em uso
+                var emailExistente = _context.Usuarios.Any(u => u.Email == model.Email);
+                if (emailExistente)
+                {
+                    ModelState.AddModelError("Email", "Este e-mail já está em uso. Por favor, utilize outro e-mail.");
+                    return View(model);
+                }
 
-            _context.Usuarios.Add(usuario);
-            await _context.SaveChangesAsync();
+                // Verifica se as senhas coincidem
+                if (model.Senha != model.ConfirmarSenha)
+                {
+                    ModelState.AddModelError("Senha", "As senhas não coincidem. Por favor, tente novamente.");
+                    return View(model);
+                }
 
-            return RedirectToAction("Index");
+                var usuario = new Usuario
+                {
+                    Nome = model.Nome,
+                    Email = model.Email,
+                    Senha = model.Senha,
+                };
 
+                _context.Usuarios.Add(usuario);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+            }
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError(string.Empty, ex.Message);
         }
 
         return View(model); // Retorna a view com o modelo para corrigir os erros, se houver
     }
+
 
 
     [HttpGet]
@@ -106,31 +127,53 @@ public class UserController : Controller
     [HttpPost]
     public async Task<IActionResult> Edit(UserEditViewModel model)
     {
-        if (ModelState.IsValid)
+        try
         {
-            var usuario = await _context.Usuarios.FindAsync(model.Id);
-            if (usuario == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                var usuario = await _context.Usuarios.FindAsync(model.Id);
+                if (usuario == null)
+                {
+                    return NotFound();
+                }
+
+                // Verifica se o e-mail já existe para outro usuário
+                var emailExistente = _context.Usuarios.Any(u => u.Email == model.Email && u.Id != model.Id);
+                if (emailExistente)
+                {
+                    ModelState.AddModelError("Email", "Este e-mail já está em uso por outro usuário.");
+                    return View(model);
+                }
+
+                usuario.Nome = model.Nome;
+                usuario.Email = model.Email;
+
+                // Atualiza a senha somente se o usuário preencher os campos de senha e elas coincidirem
+                if (!string.IsNullOrEmpty(model.Senha))
+                {
+                    if (model.Senha != model.ConfirmarSenha)
+                    {
+                        ModelState.AddModelError("Senha", "As senhas não coincidem. Por favor, tente novamente.");
+                        return View(model);
+                    }
+
+                    usuario.Senha = model.Senha; // Adicione lógica de criptografia aqui, se necessário
+                }
+
+                _context.Update(usuario);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index");
             }
-
-            usuario.Nome = model.Nome;
-            usuario.Email = model.Email;
-
-            // Atualize a senha apenas se o usuário preencher os campos de senha
-            if (!string.IsNullOrEmpty(model.Senha) && model.Senha == model.ConfirmarSenha)
-            {
-                usuario.Senha = model.Senha; // Adicione lógica de criptografia aqui, se necessário
-            }
-
-            _context.Update(usuario);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError(string.Empty, ex.Message);
         }
 
-        return View(model); // Em caso de erro, retorna à view de edição
+        return View(model); // Retorna à view com os erros para correção
     }
+
 
     [HttpGet]
     public async Task<IActionResult> Permissions()

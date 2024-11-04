@@ -28,11 +28,21 @@ namespace SistemaPermissoes.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string email, string senha)
         {
-            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
-
-            // Verifica se o usuário existe e se a senha é igual à armazenada
-            if (usuario != null && usuario.Senha == senha) // Compare diretamente
+            try
             {
+                var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
+
+                if (usuario == null)
+                {
+                    throw new Exception("E-mail não encontrado.");
+                }
+
+                if (usuario.Senha != senha)
+                {
+                    throw new Exception("Senha incorreta.");
+                }
+
+                // Se chegou aqui, o usuário e a senha estão corretos
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, usuario.Email),
@@ -48,8 +58,11 @@ namespace SistemaPermissoes.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
-
-            ModelState.AddModelError(string.Empty, "Login inválido");
+            catch (Exception ex)
+            {
+                // Adiciona o erro específico ao ModelState para exibir na tela
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
 
             return View();
         }
