@@ -1,17 +1,42 @@
 ﻿@{
     ViewData["Title"] = "Home";
 
+
+
     var tarefasDoUsuario = ViewBag.TarefasDoUsuario as List<Tarefa>;
 }
 
-<h2>Bem-vindo à Home</h2>
-<ul>
-    @if (tarefasDoUsuario.Any(t => t.Nome == "Cadastrar Usuário"))
-    {
-        <li><a href="/User">Gerenciar Usuarios</a></li>
-    }
-        <li><a href="/Task">Gerenciar Tarefas</a></li>
-        <li><a href="/Role">Gerenciar Papeis</a></li>
+<link rel="stylesheet" href="~/css/styles.css" />
 
-    <li><a href="/Dashboard">Ir para o Dashboard</a></li>
-</ul>
+<div class="home-container">
+    <h2>Bem-vindo</h2>
+    <div class="home-menu">
+            @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Cadastrar Usuário"))
+            {
+                <div class="menu-item">
+                    <a href="/User">
+                        <div class="icon user-icon"></div>
+                        <span>Gerenciar Usuários</span>
+                    </a>
+                </div>
+            }
+        <div class="menu-item">
+            <a href="/Task">
+                <div class="icon clipboard-icon"></div>
+                <span>Gerenciar Tarefas</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="/Role">
+                <div class="icon graph-icon"></div>
+                <span>Gerenciar Papéis</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="/Dashboard">
+                <div class="icon tool-icon"></div>
+                <span>Ir para o Dashboard</span>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<UserViewModel>
 
 @{
-    ViewData["Title"] = "Usuários";
+    ViewData["Title"] = "Dar Permissões";
 }
 
 <link rel="stylesheet" href="~/css/styles.css" />
 
-<div class="user-management-wrapper">
-    <h2>Gerenciar Usuários</h2>
+<div class="permissions-wrapper">
+    <h2>Dar Permissões</h2>
 
     <table class="table table-striped">
         <thead>
@@ -26,32 +26,21 @@
                     <td>@usuario.Email</td>
                     <td>
                         @if (usuario.Papeis != null && usuario.Papeis.Any())
-
                         {
                             @string.Join(", ", usuario.Papeis)
-                            // Mostra os papéis separados por vírgula
-
                         }
-
                         else
-
                         {
-                            <span>Nenhum papel</span> <!-- Mensagem caso o usuário não tenha papéis -->
+                            <span>Nenhum papel</span>
                         }
                     </td>
                     <td>
-                        <a href="/User/Edit/@usuario.Id" class="btn-danger">Editar</a>
+                        <a href="/User/AddPermissions/@usuario.Id" class="btn-danger">Adicionar Permissões</a>
                     </td>
                 </tr>
             }
+            <a href="/User" class="btn-danger">Voltar</a>
+
         </tbody>
     </table>
-    <p></p>
-
-    <div class="mb-3">
-        <button class="btn btn-success" onclick="location.href='@Url.Action("Create", "User")'">Cadastrar Novo Usuário</button>
-        <button class="btn btn-primary" onclick="location.href='@Url.Action("Permissions", "User")'">Dar Permissões</button>
-        <a href="/User" class="btn-danger">Voltar</a>
-    </div>
-
 </div>
