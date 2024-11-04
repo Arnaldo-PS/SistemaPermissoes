@@ -17,7 +17,10 @@
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Papéis</th>
-                <th>Ações</th>
+                @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Editar Usuario"))
+                        {
+                            <th>Ações</th>
+                        }
             </tr>
         </thead>
         <tbody>
@@ -41,12 +44,12 @@
                             <span>Nenhum papel</span> <!-- Mensagem caso o usuário não tenha papéis -->
                         }
                     </td>
-                    <td>
                         @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Editar Usuario"))
                         {
-                            <a href="/User/Edit/@usuario.Id" class="btn-danger">Editar</a>
+                        <td>
+                                <a href="/User/Edit/@usuario.Id" class="btn-danger">Editar</a>
+                        </td>
                         }
-                    </td>
                 </tr>
             }
         </tbody>
