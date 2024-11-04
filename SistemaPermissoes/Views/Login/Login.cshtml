@@ -2,11 +2,13 @@
     ViewData["Title"] = "Login";
 }
 
-<link rel="stylesheet" href="~/css/styles.css" />
+<link rel="stylesheet" href="~/css/style.css" />
 
 <div class="login-wrapper">
     <div class="login-container">
-        <h2>Login</h2>
+        <h2>Bem-vindo de volta!</h2>
+        <br />
+
         @if (!ViewData.ModelState.IsValid)
 
         {
@@ -15,18 +17,25 @@
                 @Html.ValidationSummary(false)
             </div>
         }
+
         <form method="post" asp-action="Login">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" name="email" class="form-control" required />
+                <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email" required aria-required="true" />
             </div>
 
             <div class="form-group">
                 <label for="senha">Senha</label>
-                <input type="password" name="senha" class="form-control" required />
+                <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite sua senha" required aria-required="true" />
             </div>
 
             <button type="submit" class="btn btn-primary">Entrar</button>
+
+            <p class="register-link">
+                <br />
+
+                Não tem uma conta? <a href="/register">Registre-se</a>
+            </p>
         </form>
     </div>
 </div>

@@ -1,34 +1,34 @@
 ﻿@{
     ViewData["Title"] = "Home";
 
-
-
     var tarefasDoUsuario = ViewBag.TarefasDoUsuario as List<Tarefa>;
 }
 
-<link rel="stylesheet" href="~/css/styles.css" />
+<link rel="stylesheet" href="~/css/style.css" />
 
 <div class="home-container">
     <h2>Bem-vindo</h2>
     <div class="home-menu">
-            @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Ver Usuarios"))
-            {
-                <div class="menu-item">
-                    <a href="/User">
-                        <div class="icon user-icon"></div>
-                        <span>Gerenciar Usuários</span>
-                    </a>
-                </div>
-            }
-            @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Criar Tarefa"))
-            {
-                <div class="menu-item">
-                    <a href="/Task">
-                        <div class="icon clipboard-icon"></div>
-                        <span>Gerenciar Tarefas</span>
-                    </a>
-                </div>
-            }
+        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Ver Usuarios"))
+
+        {
+            <div class="menu-item">
+                <a href="/User">
+                    <div class="icon user-icon"></div>
+                    <span>Gerenciar Usuários</span>
+                </a>
+            </div>
+        }
+        @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Criar Tarefa"))
+
+        {
+            <div class="menu-item">
+                <a href="/Task">
+                    <div class="icon clipboard-icon"></div>
+                    <span>Gerenciar Tarefas</span>
+                </a>
+            </div>
+        }
         @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Criar Papel"))
 
         {
@@ -38,7 +38,7 @@
                     <span>Gerenciar Papéis</span>
                 </a>
             </div>
-            }
+        }
         @if (tarefasDoUsuario != null && tarefasDoUsuario.Any(t => t.Nome == "Acessar Dashboard"))
 
         {
@@ -49,8 +49,23 @@
                 </a>
             </div>
         }
-    </div>
-    <p></p>
-    <a href="/Login" class="btn-danger">Logout</a>
+            <div class="menu-item">
+                <a href="/Budget">
+                    <div class="icon budget-icon"></div>
+                    <span>Gerenciar Orçamentos</span>
+                </a>
+            </div>
 
+            <div class="menu-item">
+                <a href="/Project">
+                    <div class="icon project-icon"></div>
+                    <span>Gerenciar Projetos</span>
+                </a>
+            </div>
+        
+    </div>
+    <br />
+    <br />
+
+    <a href="/Login" class="btn-danger">Logout</a>
 </div>
